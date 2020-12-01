@@ -1,5 +1,4 @@
-# gameTheoryFinalProject
-Author: Xinyu Gu, Yiyang Luo
+# gameTheoryFinalProject Author: Xinyu Gu, Yiyang Luo
 This is the coding part for the project
 There are two python files: classDef.py and main.py
 
