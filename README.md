@@ -1,5 +1,5 @@
 # gameTheoryFinalProject
-# This is the coding part for the project
+This is the coding part for the project
 There are two python files: classDef.py and main.py
 
 classDef.py:
