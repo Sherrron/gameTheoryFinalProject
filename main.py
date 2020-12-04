@@ -39,9 +39,8 @@ if __name__ == '__main__':
     #print(x)
     for i in playerlst:
         for j in playerlst:
-            if i != j:
-                for k in range(turns):
-                    play(i,j)
+            for k in range(turns):
+                play(i,j)
                     
 #print(p3.strategies["player4"])
 #print(len(p3.payoffrec["player4"]))
@@ -69,12 +68,16 @@ print(p1.payoff,p2.payoff,p3.payoff,p4.payoff,p5.payoff)
 #print(p1.strategies["player5"])
 #print(p5.strategies["player1"])
 '''
-
-plt.plot(x2,p3.payoffrec["player4"][:turns*2],'r',label = '3vs2')
-plt.plot(x2,p1.payoffrec["player4"][:turns*2],'k',label = '1vs2')
-plt.plot(x2,p2.payoffrec["player4"][:turns*2],'b',label = '4vs2')
+#plt.bar([p1.name,p2.name,p3.name,p4.name,p5.name], [p1.payoff,p2.payoff,p3.payoff,p4.payoff,p5.payoff], align='center', alpha=0.5)
+'''
+plt.plot(x2,p3.payoffrec["player2"][:turns*2],'r',label = '3vs4')
+plt.plot(x2,p1.payoffrec["player2"][:turns*2],'k',label = '1vs4')
+plt.plot(x2,p2.payoffrec["player2"][:turns*2],'b',label = '2vs4')
+plt.plot(x2,p4.payoffrec["player2"][:turns*2],'violet',label = '4vs4')
 plt.legend(loc=2, bbox_to_anchor=(1.05,1.0),borderaxespad = 0.) 
-plt.title("Payoff Curves")
-print(p1.payoff,p2.payoff,p3.payoff,p4.payoff,p5.payoff)
+plt.title("Payoff Curves")'''
+
+#print(p1.payoff,p2.payoff,p3.payoff,p4.payoff,p5.payoff)
+#print(p1.payoffrec["player4"][9],p2.payoffrec["player4"][9],p3.payoffrec["player4"][9],p4.payoffrec["player4"][9])
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

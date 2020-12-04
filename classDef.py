@@ -131,6 +131,7 @@ class Player5():
         self.tolerance = 2
         self.tenspayoff = 0
         self.best = {"player1":3,"player2":3,"player3":2,"player4":1}
+        self.tensrec = {"player1": -15, "player2":16,"player3":11,"player4":13}
 
     def determineStrategy(self,other):
 
@@ -166,7 +167,37 @@ class Player5():
             #print("returns", self.oldstr)
             return self.oldstr
         else:
-            if self.tenspayoff > 7.44:
+            if other.name == "player5":
+                if other.name in self.strategies.keys():
+                    #print("turnssss", self.turns)
+                    #print("sit1， other last move",other.strategies[self.name][self.turns-1] )
+                    if other.strategies[self.name][self.turns - 1] == 0:
+                        #print("sit3")
+                        try:
+                            self.strategies[other.name].append(1-self.oldstr)
+                        except:
+                            self.strategies[other.name] = 1-self.oldstr
+                        self.oldstr = 1-self.oldstr
+                        self.turns += 1
+                        #print("returns", self.oldstr)
+                        return self.oldstr
+                    else:
+                        #print("sit4")
+                        try:
+                            self.strategies[other.name].append(self.oldstr)
+                        except:
+                            self.strategies[other.name] = self.oldstr
+                        self.turns += 1
+                        #print("returns", self.oldstr)
+                        return self.oldstr
+            else:
+                #print("sit2")
+                self.strategies[other.name] = [1]
+            self.turns += 1
+            #print("returns", self.oldstr)
+            return self.oldstr
+                
+            if self.tenspayoff > self.tensrec[other.name]:
                 #if self.turns % 59 == 0:
                 #    self.turns = 0      
 
@@ -203,7 +234,7 @@ class Player5():
                 #print(other.name,"change",self.turns)
                 #if self.turns % 59 == 0:
                 #    self.turns = 0
-                if other.name == "player1" or other.name == "player2":
+                if other.name == "player2" or other.name == "player3":
                     #print("change to 3")
                     if other.name in self.strategies.keys():
                         if 0 in other.strategies[self.name]:
@@ -225,27 +256,7 @@ class Player5():
                         self.strategies[other.name] = [1]
                         self.turns += 1
                         return 1
-                elif other.name == "player3":
-                    #print("change to 2")
-                    count = 0
-                    try:
-                        for i in other.strategies[self.name]:
-                            if i == 0:
-                                count += 1
-                        if count <= self.tolerance:
-                            try:
-                                self.strategies[other.name].append(1)
-                            except:
-                                self.strategies[other.name] = [1]
-                            self.turns += 1
-                            return 1
-                        self.strategies[other.name].append(other.strategies[self.name][-1])
-                        self.turns += 1
-                        return other.strategies[self.name][-1]
-                    except:
-                        self.strategies[other.name] = [1]
-                        self.turns += 1
-                        return 1           
+   
                 else:
                     try:
                         self.strategies[other.name].append(0)
